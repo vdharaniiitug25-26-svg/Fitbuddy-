@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260929-03-b7e1aa1","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/6542d56fbfe7a3eb.telemetry_sdk.js" integrity="sha512-ECdM0nK7EkwDuOqho2qxgyRQXyBHk9hZqRKMBr+Xsu6zjeHlt+qkO2N2YRiHN7Kg4e1fEHDhjIp4bGJYVypv1g=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitBuddy — AI Fitness Plan Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#102a2b; --forest:#145c50; --lime:#d9f99d; --cream:#f8faf4; --mist:#e9f1ea; --coral:#ff7a59; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f8faf4; }
+    button, input, select, textarea { font:inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:3px solid #f59e0b; outline-offset:3px; }
+    .route { display:none; animation:rise .35s ease both; }
+    .route.active { display:block; }
+    .nav-link { border-radius:999px; padding:.55rem .75rem; color:#42625e; font-size:.9rem; font-weight:700; transition:.2s; }
+    .nav-link:hover, .nav-link.active { color:#145c50; background:#e6f5dc; }
+    .hero-orb { position:absolute; border-radius:999px; filter:blur(2px); opacity:.9; }
+    .soft-card { background:rgba(255,255,255,.9); border:1px solid rgba(20,92,80,.11); box-shadow:0 16px 42px rgba(16,42,43,.08); }
+    .section-kicker { letter-spacing:.13em; text-transform:uppercase; font-size:.72rem; font-weight:800; color:#16705f; }
+    .field { width:100%; border:1px solid #c8d8d1; border-radius:.8rem; padding:.78rem .9rem; background:#fff; color:#102a2b; }
+    .field:focus { border-color:#16705f; box-shadow:0 0 0 3px rgba(22,112,95,.14); outline:none; }
+    .field.invalid { border-color:#dc2626; }
+    .error { color:#b91c1c; min-height:1.15rem; font-size:.78rem; margin-top:.25rem; }
+    .plan-day { border-left:4px solid #78ba69; }
+    .exercise { background:#f5f9f3; border:1px solid #dfebe0; }
+    .chip.selected { background:#145c50; color:white; border-color:#145c50; }
+    .modal-shell { display:none; }
+    .modal-shell.open { display:flex; }
+    .spinner { width:20px; height:20px; border:3px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes rise { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
+    @media (max-width: 900px) { #desktop-nav { display:none; } #menu-button { display:inline-flex; } #mobile-nav.open { display:flex; } }
+    @media (min-width: 901px) { #menu-button { display:none; } #mobile-nav { display:none !important; } }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/6c2ecc939521f244.data_sdk.js" type="text/javascript" integrity="sha512-gRx8s+XsZDN6mSIQu2sivLZysbV0WHhb5kXNUWlgVb5lCMU1foJYukyMEDPv8Tnoocb8iwqB4XdRrWc7oEGzIQ=="></script>
+  <script src="/_sdk/6bf4579cc4c25151.editing_sdk.js" type="text/javascript" integrity="sha512-12l4JxmokLfWaGAHNO68l5Ev8ahSshUKfuxnYUB8nkqSU1+WiCvimsPjHzPjw1k7DcHL+eZ+K9Bld04jnd5gkg=="></script>
+  <script src="/_sdk/ddcab3e45959c817.resizing_sdk.js" type="text/javascript" integrity="sha512-VAviUKfZVzugWBSeULYjSljTX+nb84wc6Zzbx5GQaQgh6X2ISSjXi8eIiCDGdwDh10esJMY0+QFQgUy9NcrTlQ=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(248, 250, 244);">
+  <header class="sticky top-0 z-40 border-b border-emerald-950/10 bg-[#f8faf4]/90 backdrop-blur">
+   <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4" aria-label="Main navigation"><button type="button" class="flex items-center gap-2 text-left" onclick="navigate('home')"> <span class="grid h-10 w-10 place-items-center rounded-xl bg-[#145c50] text-[#d9f99d]" aria-hidden="true"><i data-lucide="dumbbell" class="h-5 w-5"></i></span> <span data-template-id="brand-name" class="canva-text text-xl font-extrabold tracking-tight" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 16px;">FitBuddy</span> </button>
+    <div id="desktop-nav" class="flex items-center gap-1"><button class="nav-link active" data-route="home" type="button" onclick="navigate('home')">Home</button> <button class="nav-link" data-route="generate" type="button" onclick="navigate('generate')">Generate Plan</button> <button class="nav-link" data-route="my-plan" type="button" onclick="navigate('my-plan')">My Plan</button> <button class="nav-link" data-route="feedback" type="button" onclick="navigate('feedback')">Feedback</button> <button class="nav-link" data-route="admin" type="button" onclick="navigate('admin')">Admin Dashboard</button> <button class="nav-link" data-route="docs" type="button" onclick="navigate('docs')">API Docs</button>
+    </div><button id="menu-button" type="button" onclick="toggleMobileMenu()" class="rounded-xl border border-emerald-900/15 p-2 text-[#145c50]" aria-label="Open navigation menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+   </nav>
+   <div id="mobile-nav" class="hidden flex-col gap-1 border-t border-emerald-950/10 bg-white px-5 py-3"><button class="nav-link text-left" type="button" onclick="navigate('home');toggleMobileMenu()">Home</button> <button class="nav-link text-left" type="button" onclick="navigate('generate');toggleMobileMenu()">Generate Plan</button> <button class="nav-link text-left" type="button" onclick="navigate('my-plan');toggleMobileMenu()">My Plan</button> <button class="nav-link text-left" type="button" onclick="navigate('feedback');toggleMobileMenu()">Feedback</button> <button class="nav-link text-left" type="button" onclick="navigate('admin');toggleMobileMenu()">Admin Dashboard</button> <button class="nav-link text-left" type="button" onclick="navigate('docs');toggleMobileMenu()">API Docs</button>
+   </div>
+  </header>
+  <main class="w-full">
+   <div id="app-message" class="sr-only" aria-live="polite"></div>
+   <section id="home" class="route active">
+    <div class="relative overflow-hidden bg-[#f8faf4]">
+     <div class="hero-orb h-64 w-64 bg-[#d9f99d] -right-20 top-8"></div>
+     <div class="hero-orb h-48 w-48 bg-[#ffc8b9] -left-16 bottom-2"></div>
+     <div class="relative mx-auto grid w-full max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.08fr_.92fr] lg:py-24">
+      <div class="flex flex-col justify-center">
+       <p data-template-id="hero-kicker" class="canva-text section-kicker" style="color: rgb(22, 112, 95); font-weight: 800; font-style: normal; font-size: 16px; letter-spacing: 0.13rem;">Training, made personal</p>
+       <h1 data-template-id="hero-title" class="canva-text mt-4 max-w-3xl font-['Fraunces'] text-5xl font-bold leading-[1.02] tracking-tight text-[#102a2b] sm:text-6xl" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">Your Personal AI Fitness Companion</h1>
+       <p data-template-id="hero-subtitle" class="canva-text mt-6 max-w-xl text-lg leading-8 text-[#496761]" style="color: rgb(73, 103, 97); font-weight: 400; font-style: normal; font-size: 18px;">Generate personalized workout plans and nutrition guidance with AI.</p>
+       <div class="mt-8 flex flex-wrap gap-3"><button data-template-id="hero-primary" class="canva-button inline-flex items-center gap-2 rounded-xl bg-[#145c50] px-5 py-3 font-bold text-white shadow-lg shadow-emerald-950/15 transition hover:-translate-y-0.5" type="button" onclick="navigate('generate')" style="background: rgb(20, 92, 80); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Generate My Plan</button> <button data-template-id="hero-secondary" class="canva-button inline-flex items-center gap-2 rounded-xl border border-[#145c50] px-5 py-3 font-bold text-[#145c50] transition hover:bg-white" type="button" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})" style="background: rgb(248, 250, 244); color: rgb(20, 92, 80); font-weight: 700; font-style: normal; font-size: 16px;">View Features</button>
+       </div>
+       <p class="mt-5 text-sm text-[#54736d]"><i data-lucide="shield-check" class="mr-1 inline h-4 w-4"></i> Thoughtful movement guidance, always adjustable to you.</p>
+      </div>
+      <aside data-template-id="hero-dashboard" class="canva-panel soft-card relative overflow-hidden rounded-[2rem] p-6 sm:p-8" style="background: rgb(255, 255, 255);">
+       <div class="absolute right-0 top-0 h-32 w-32 rounded-bl-[6rem] bg-[#d9f99d]"></div>
+       <div class="relative">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm font-bold text-[#5f7c72]">TODAY'S MOMENTUM</p>
+          <p class="mt-1 text-2xl font-extrabold">Built for your pace</p>
+         </div><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#145c50] text-[#d9f99d]"><i data-lucide="activity"></i></span>
+        </div>
+        <div class="mt-8 grid grid-cols-2 gap-3">
+         <div class="rounded-2xl bg-[#f1f8e9] p-4">
+          <p class="text-xs font-bold text-[#6a877b]">PLAN LENGTH</p>
+          <p class="mt-2 text-2xl font-extrabold">7 days</p>
+         </div>
+         <div class="rounded-2xl bg-[#fff0ea] p-4">
+          <p class="text-xs font-bold text-[#8c6659]">APPROACH</p>
+          <p class="mt-2 text-2xl font-extrabold">Balanced</p>
+         </div>
+        </div>
+        <div class="mt-5 rounded-2xl bg-[#102a2b] p-5 text-white">
+         <div class="flex items-center justify-between">
+          <span class="font-bold">Weekly rhythm</span><i data-lucide="sparkles" class="h-5 w-5 text-[#d9f99d]"></i>
+         </div>
+         <div class="mt-5 flex h-20 items-end justify-between gap-2">
+          <span class="h-[38%] flex-1 rounded-t bg-[#78ba69]"></span><span class="h-[64%] flex-1 rounded-t bg-[#d9f99d]"></span><span class="h-[47%] flex-1 rounded-t bg-[#78ba69]"></span><span class="h-[85%] flex-1 rounded-t bg-[#d9f99d]"></span><span class="h-[55%] flex-1 rounded-t bg-[#78ba69]"></span><span class="h-[31%] flex-1 rounded-t bg-[#d9f99d]"></span><span class="h-[72%] flex-1 rounded-t bg-[#78ba69]"></span>
+         </div>
+        </div>
+       </div>
+      </aside>
+     </div>
+    </div>
+    <section id="features" class="mx-auto w-full max-w-7xl px-5 py-18">
+     <div class="max-w-2xl">
+      <p data-template-id="features-kicker" class="canva-text section-kicker" style="color: rgb(22, 112, 95); font-weight: 800; font-style: normal; font-size: 16px; letter-spacing: 0.13rem;">What FitBuddy brings to your week</p>
+      <h2 data-template-id="features-title" class="canva-text mt-3 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 24px;">Less guesswork. More good movement.</h2>
+     </div>
+     <div class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <article data-template-id="feature-card-1" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="brain-circuit" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-1" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">AI Workout Plans</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">A practical daily structure shaped around your selected goal and pace.</p>
+      </article>
+      <article data-template-id="feature-card-2" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="sliders-horizontal" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-2" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">Personalized Fitness</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">Flexible routines that begin with the information you choose to share.</p>
+      </article>
+      <article data-template-id="feature-card-3" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="salad" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-3" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">Nutrition Guidance</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">Simple, sustainable food ideas to support regular training sessions.</p>
+      </article>
+      <article data-template-id="feature-card-4" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="heart-pulse" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-4" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">Recovery Tips</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">Planned breathing room that respects rest, mobility, and recovery.</p>
+      </article>
+      <article data-template-id="feature-card-5" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="message-circle-more" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-5" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">Feedback-Based Updates</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">Tell FitBuddy what feels right, then receive a carefully adjusted plan.</p>
+      </article>
+      <article data-template-id="feature-card-6" class="canva-card soft-card rounded-2xl p-6" style="background: rgb(255, 255, 255);">
+       <i data-lucide="chart-no-axes-combined" class="h-7 w-7 text-[#16705f]"></i>
+       <h3 data-template-id="feature-title-6" class="canva-text mt-5 text-lg font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 19px;">Progress Tracking</h3>
+       <p class="mt-2 text-sm leading-6 text-[#58746e]">Keep your plan details and feedback together in one focused workspace.</p>
+      </article>
+     </div>
+    </section>
+    <section class="bg-[#102a2b] py-18 text-white">
+     <div class="mx-auto w-full max-w-7xl px-5">
+      <p data-template-id="how-kicker" class="canva-text section-kicker text-[#d9f99d]" style="color: rgb(217, 249, 157); font-weight: 800; font-style: normal; font-size: 16px; letter-spacing: 0.13rem;">How it works</p>
+      <h2 data-template-id="how-title" class="canva-text mt-3 font-['Fraunces'] text-4xl font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">A plan that gets better with you.</h2>
+      <ol class="mt-10 grid gap-4 md:grid-cols-5">
+       <li class="rounded-2xl border border-white/15 bg-white/5 p-5"><span class="text-[#d9f99d] font-extrabold">01</span><p data-template-id="step-1" class="canva-text mt-6 font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Enter Your Details</p></li>
+       <li class="rounded-2xl border border-white/15 bg-white/5 p-5"><span class="text-[#d9f99d] font-extrabold">02</span><p data-template-id="step-2" class="canva-text mt-6 font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Generate AI Plan</p></li>
+       <li class="rounded-2xl border border-white/15 bg-white/5 p-5"><span class="text-[#d9f99d] font-extrabold">03</span><p data-template-id="step-3" class="canva-text mt-6 font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Follow Your 7-Day Plan</p></li>
+       <li class="rounded-2xl border border-white/15 bg-white/5 p-5"><span class="text-[#d9f99d] font-extrabold">04</span><p data-template-id="step-4" class="canva-text mt-6 font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Give Feedback</p></li>
+       <li class="rounded-2xl border border-white/15 bg-white/5 p-5"><span class="text-[#d9f99d] font-extrabold">05</span><p data-template-id="step-5" class="canva-text mt-6 font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Update Your Plan</p></li>
+      </ol>
+     </div>
+    </section>
+    <section class="mx-auto w-full max-w-7xl px-5 py-16">
+     <div data-template-id="api-status-card" class="canva-card rounded-3xl bg-[#e6f5dc] p-7 md:flex md:items-center md:justify-between" style="background: rgb(230, 245, 220);">
+      <div>
+       <p class="section-kicker">Settings / API status</p>
+       <h2 data-template-id="api-status-title" class="canva-text mt-2 text-2xl font-extrabold" style="color: rgb(16, 42, 43); font-weight: 800; font-style: normal; font-size: 24px;">Demo-ready today. Live-model ready later.</h2>
+       <p data-template-id="api-status-copy" class="canva-text mt-2 max-w-3xl leading-7 text-[#496761]" style="color: rgb(73, 103, 97); font-weight: 400; font-style: normal; font-size: 16px;">A live Gemini API key must be configured in a separate backend for real Gemini calls. This interactive FitBuddy page remains fully usable with its structured demo fallback.</p>
+      </div><button type="button" onclick="navigate('docs')" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#145c50] px-4 py-3 font-bold text-white md:mt-0">Read API Docs <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+     </div>
+    </section>
+   </section>
+   <section id="generate" class="route mx-auto w-full max-w-5xl px-5 py-12">
+    <p class="section-kicker">Plan studio</p>
+    <h1 data-template-id="generate-title" class="canva-text mt-2 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">Generate your next 7-day plan</h1>
+    <p data-template-id="generate-intro" class="canva-text mt-3 max-w-2xl leading-7 text-[#58746e]" style="color: rgb(88, 116, 110); font-weight: 400; font-style: normal; font-size: 16px;">Share a few details and FitBuddy will build a balanced, structured plan you can save and adjust.</p>
+    <div class="mt-8 grid gap-7 lg:grid-cols-[.88fr_1.12fr]">
+     <aside class="rounded-3xl bg-[#102a2b] p-7 text-white">
+      <i data-lucide="sparkles" class="h-8 w-8 text-[#d9f99d]"></i>
+      <h2 class="mt-6 text-2xl font-extrabold">A plan with room to adapt.</h2>
+      <p class="mt-3 leading-7 text-emerald-50/75">FitBuddy creates structured training guidance using the details you provide. Adjust it later with feedback.</p>
+      <div class="mt-7 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-emerald-50">
+       For general fitness guidance only. Check with a qualified professional before beginning a new training routine, especially if you have injuries or health concerns.
+      </div>
+     </aside>
+     <form id="plan-form" class="soft-card rounded-3xl p-6 sm:p-8" novalidate="">
+      <div class="grid gap-5 sm:grid-cols-2">
+       <div>
+        <label for="name" class="font-bold">Name <span class="text-red-600">*</span></label><input id="name" name="name" class="field mt-2" required="" autocomplete="name">
+        <p id="name-error" class="error" role="alert"></p>
+       </div>
+       <div>
+        <label for="user-id" class="font-bold">User ID <span class="text-red-600">*</span></label><input id="user-id" name="user_id" class="field mt-2" required="">
+        <p id="user-id-error" class="error" role="alert"></p>
+       </div>
+       <div>
+        <label for="age" class="font-bold">Age <span class="text-red-600">*</span></label><input id="age" name="age" class="field mt-2" type="number" inputmode="numeric" min="13" max="100" required="">
+        <p id="age-error" class="error" role="alert"></p>
+       </div>
+       <div>
+        <label for="weight" class="font-bold">Weight (kg) <span class="text-red-600">*</span></label><input id="weight" name="weight" class="field mt-2" type="number" inputmode="decimal" min="30" max="300" step="0.1" required="">
+        <p id="weight-error" class="error" role="alert"></p>
+       </div>
+       <div>
+        <label for="goal" class="font-bold">Fitness Goal <span class="text-red-600">*</span></label><select id="goal" name="goal" class="field mt-2" required=""><option value="">Select a goal</option><option>Weight Loss</option><option>Muscle Gain</option><option>General Wellness</option></select>
+        <p id="goal-error" class="error" role="alert"></p>
+       </div>
+       <div>
+        <label for="intensity" class="font-bold">Workout Intensity <span class="text-red-600">*</span></label><select id="intensity" name="intensity" class="field mt-2" required=""><option value="">Select intensity</option><option>Beginner</option><option>Moderate</option><option>Advanced</option></select>
+        <p id="intensity-error" class="error" role="alert"></p>
+       </div>
+      </div>
+      <div id="form-error" class="hidden mt-4 rounded-xl bg-red-50 p-3 text-sm font-medium text-red-800" role="alert"></div><button id="generate-submit" data-template-id="generate-submit" class="canva-button mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#145c50] px-5 py-3.5 font-bold text-white transition hover:bg-[#0d473e]" type="submit" style="background: rgb(20, 92, 80); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Generate My Plan</button>
+      <p class="mt-3 text-center text-xs text-[#66817b]">Generated in the FitBuddy demo environment; no live AI endpoint is used.</p>
+     </form>
+    </div>
+    <div id="generate-loading" class="hidden mt-8 rounded-2xl bg-[#e6f5dc] p-5 text-[#145c50]" aria-live="polite">
+     <div class="flex items-center gap-3">
+      <span class="spinner !border-[#145c50]/30 !border-t-[#145c50]"></span><span data-template-id="loading-message" class="canva-text font-bold" style="color: rgb(20, 92, 80); font-weight: 700; font-style: normal; font-size: 16px;">Generating your personalized fitness plan...</span>
+     </div>
+    </div>
+    <div id="generated-preview" class="hidden mt-8"></div>
+   </section>
+   <section id="my-plan" class="route mx-auto w-full max-w-7xl px-5 py-12">
+    <p class="section-kicker">Your training space</p>
+    <h1 data-template-id="my-plan-title" class="canva-text mt-2 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">My Plan</h1>
+    <div id="my-plan-content" class="mt-8"></div>
+   </section>
+   <section id="feedback" class="route mx-auto w-full max-w-7xl px-5 py-12">
+    <p class="section-kicker">Adapt your routine</p>
+    <h1 data-template-id="feedback-title" class="canva-text mt-2 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">Feedback</h1>
+    <div id="feedback-content" class="mt-8"></div>
+   </section>
+   <section id="admin" class="route mx-auto w-full max-w-7xl px-5 py-12">
+    <p class="section-kicker">Saved records</p>
+    <h1 data-template-id="admin-title" class="canva-text mt-2 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">Admin Dashboard</h1>
+    <div id="admin-content" class="mt-8"></div>
+   </section>
+   <section id="docs" class="route mx-auto w-full max-w-6xl px-5 py-12">
+    <p class="section-kicker">Developer reference</p>
+    <h1 data-template-id="docs-title" class="canva-text mt-2 font-['Fraunces'] text-4xl font-bold" style="color: rgb(16, 42, 43); font-weight: 700; font-style: normal; font-size: 32px;">FitBuddy API Docs</h1>
+    <p data-template-id="docs-intro" class="canva-text mt-3 max-w-3xl leading-7 text-[#58746e]" style="color: rgb(88, 116, 110); font-weight: 400; font-style: normal; font-size: 16px;">A concise reference for the FastAPI-style routes requested for FitBuddy.</p>
+    <div class="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
+     <strong>Demo data layer:</strong> this Canva Code page uses an in-app demo data layer backed by a Canva Sheet. It is not a live FastAPI server.
+    </div>
+    <div class="mt-7 grid gap-4">
+     <div class="soft-card rounded-2xl p-5">
+      <span class="rounded-lg bg-[#d9f99d] px-2 py-1 font-mono text-sm font-bold text-[#145c50]">GET</span><code class="ml-3 font-bold">/</code>
+      <p class="mt-3 text-[#58746e]">Service welcome route.</p>
+      <pre class="mt-4 overflow-auto rounded-xl bg-[#102a2b] p-4 text-sm text-emerald-100">{"message":"Welcome to FitBuddy API"}</pre>
+     </div>
+     <div class="soft-card rounded-2xl p-5">
+      <span class="rounded-lg bg-[#ffe3dc] px-2 py-1 font-mono text-sm font-bold text-[#bd3d25]">POST</span><code class="ml-3 font-bold">/generate-workout</code>
+      <p class="mt-3 text-[#58746e]">Creates a personalized seven-day workout plan from profile details.</p>
+      <pre class="mt-4 overflow-auto rounded-xl bg-[#102a2b] p-4 text-sm text-emerald-100">{"name":"Asha","goal":"General Wellness","intensity":"Beginner"}</pre>
+     </div>
+     <div class="soft-card rounded-2xl p-5">
+      <span class="rounded-lg bg-[#ffe3dc] px-2 py-1 font-mono text-sm font-bold text-[#bd3d25]">POST</span><code class="ml-3 font-bold">/submit-feedback</code>
+      <p class="mt-3 text-[#58746e]">Stores feedback and returns an adjusted plan while preserving the original.</p>
+      <pre class="mt-4 overflow-auto rounded-xl bg-[#102a2b] p-4 text-sm text-emerald-100">{"user_id":"fit-001","feedback":"I want more cardio."}</pre>
+     </div>
+     <div class="grid gap-4 md:grid-cols-2">
+      <div class="soft-card rounded-2xl p-5">
+       <span class="rounded-lg bg-[#d9f99d] px-2 py-1 font-mono text-sm font-bold text-[#145c50]">GET</span><code class="ml-3 font-bold">/view-all-users</code>
+       <p class="mt-3 text-[#58746e]">Returns saved user records.</p>
+      </div>
+      <div class="soft-card rounded-2xl p-5">
+       <span class="rounded-lg bg-[#ffe3dc] px-2 py-1 font-mono text-sm font-bold text-[#bd3d25]">DELETE</span><code class="ml-3 font-bold">/delete-user/{user_id}</code>
+       <p class="mt-3 text-[#58746e]">Removes a user and their associated plans.</p>
+      </div>
+      <div class="soft-card rounded-2xl p-5">
+       <span class="rounded-lg bg-[#d9f99d] px-2 py-1 font-mono text-sm font-bold text-[#145c50]">GET</span><code class="ml-3 font-bold">/docs</code>
+       <p class="mt-3 text-[#58746e]">Interactive OpenAPI documentation endpoint.</p>
+      </div>
+      <div class="soft-card rounded-2xl p-5">
+       <span class="rounded-lg bg-[#d9f99d] px-2 py-1 font-mono text-sm font-bold text-[#145c50]">GET</span><code class="ml-3 font-bold">/redoc</code>
+       <p class="mt-3 text-[#58746e]">Alternative ReDoc documentation endpoint.</p>
+      </div>
+     </div>
+     <div class="soft-card rounded-2xl p-5">
+      <span class="rounded-lg bg-[#d9f99d] px-2 py-1 font-mono text-sm font-bold text-[#145c50]">GET</span><code class="ml-3 font-bold">/health</code>
+      <p class="mt-3 text-[#58746e]">Checks service availability.</p><button type="button" onclick="runHealthCheck()" class="mt-4 rounded-xl bg-[#145c50] px-4 py-2.5 font-bold text-white">Run health demo</button>
+      <pre id="health-output" class="hidden mt-4 overflow-auto rounded-xl bg-[#102a2b] p-4 text-sm text-emerald-100" aria-live="polite"></pre>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer data-template-id="footer-section" class="canva-footer mt-12 bg-[#102a2b]" style="background: rgb(16, 42, 43);">
+   <div class="mx-auto flex w-full max-w-7xl flex-col gap-5 px-5 py-9 text-emerald-50 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+     <strong data-template-id="footer-brand" class="canva-text text-lg" style="color: rgb(255, 255, 255); font-weight: 800; font-style: normal; font-size: 16px;">FitBuddy</strong>
+     <p data-template-id="footer-copy" class="canva-text mt-1 text-sm text-emerald-50/65" style="color: rgb(215, 238, 226); font-weight: 400; font-style: normal; font-size: 16px;">© 2026 FitBuddy. Move with purpose.</p>
+    </div>
+    <div class="flex gap-5 text-sm font-bold">
+     <button type="button" onclick="navigate('home')">About</button><button type="button" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'});navigate('home')">Features</button><button type="button" onclick="navigate('generate')">Contact</button>
+    </div>
+   </div>
+  </footer>
+  <div id="delete-modal" class="modal-shell fixed inset-0 z-50 items-center justify-center bg-[#102a2b]/60 p-5" role="dialog" aria-modal="true" aria-labelledby="delete-heading">
+   <div class="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl">
+    <div class="flex items-start justify-between">
+     <div>
+      <h2 id="delete-heading" class="text-2xl font-extrabold">Delete saved user?</h2>
+      <p id="delete-copy" class="mt-3 leading-6 text-[#58746e]"></p>
+     </div><i data-lucide="triangle-alert" class="h-7 w-7 text-[#bd3d25]"></i>
+    </div>
+    <div class="mt-7 flex justify-end gap-3">
+     <button type="button" onclick="closeDeleteModal()" class="rounded-xl border border-[#bdcfc7] px-4 py-2.5 font-bold">Cancel</button><button id="confirm-delete" type="button" class="rounded-xl bg-[#bd3d25] px-4 py-2.5 font-bold text-white">Delete user</button>
+    </div>
+   </div>
+  </div>
+  <template id="day-template">
+   <article class="plan-day rounded-r-2xl bg-white p-5 shadow-sm">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+     <div>
+      <p class="day-label text-xs font-extrabold uppercase tracking-widest text-[#16705f]"></p>
+      <h3 class="day-focus mt-1 text-xl font-extrabold"></h3>
+     </div><span class="rounded-full bg-[#e6f5dc] px-3 py-1 text-xs font-bold text-[#145c50]">Workout day</span>
+    </div>
+    <div class="mt-4 grid gap-3 text-sm md:grid-cols-2">
+     <div class="rounded-xl bg-[#f5f9f3] p-3">
+      <strong>Warm-up</strong>
+      <p class="day-warmup mt-1 text-[#58746e]"></p>
+     </div>
+     <div class="rounded-xl bg-[#f5f9f3] p-3">
+      <strong>Cool-down &amp; recovery</strong>
+      <p class="day-cooldown mt-1 text-[#58746e]"></p>
+     </div>
+    </div>
+    <div class="exercises mt-4 grid gap-3 sm:grid-cols-2"></div>
+   </article>
+  </template>
+  <script>
+    let backendRecords = [], selectedRecordId = null, deleteTarget = null, initialLoadTimer;
+    const $ = (id) => document.getElementById(id);
+    function say(message){ $('app-message').textContent = message; }
+    function escapeHtml(value){ return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function navigate(route) {
+      document.querySelectorAll('.route').forEach(el => el.classList.toggle('active', el.id === route));
+      document.querySelectorAll('[data-route]').forEach(el => el.classList.toggle('active', el.dataset.route === route));
+      if(route === 'my-plan') renderMyPlan(); if(route === 'feedback') renderFeedback(); if(route === 'admin') renderAdmin();
+      window.scrollTo({top:0,behavior:'smooth'}); say(route.replace('-', ' ') + ' section opened');
+    }
+    function toggleMobileMenu(){ const menu=$('mobile-nav'), open=menu.classList.toggle('open'); $('menu-button').setAttribute('aria-expanded', String(open)); }
+    function currentRecord(){ return backendRecords.find(r => r.__backendId === selectedRecordId) || backendRecords[backendRecords.length-1] || null; }
+    function parsePlan(raw){ try { return raw ? JSON.parse(raw) : null; } catch { return null; } }
+    function planData(profile, adjustment='') {
+      const level = profile.intensity === 'Beginner' ? { sets:'2', reps:'8–10', duration:'20 min', rest:'75 sec' } : profile.intensity === 'Advanced' ? { sets:'4', reps:'10–14', duration:'40 min', rest:'40 sec' } : { sets:'3', reps:'10–12', duration:'30 min', rest:'60 sec' };
+      const cardio = profile.goal === 'Weight Loss' ? 'Brisk cardio intervals' : profile.goal === 'Muscle Gain' ? 'Incline walk finisher' : 'Steady cycling';
+      const strength = profile.goal === 'Muscle Gain' ? 'Strength-building circuit' : profile.goal === 'Weight Loss' ? 'Full-body metabolic circuit' : 'Balanced movement circuit';
+      const moreCardio = /cardio/i.test(adjustment), moreRest = /rest/i.test(adjustment), easier = /difficult/i.test(adjustment), harder = /easy/i.test(adjustment), moreStrength = /strength/i.test(adjustment);
+      const focus = moreCardio ? 'Cardio emphasis' : moreStrength ? 'Strength emphasis' : strength;
+      const scale = easier ? 'Use a lighter load and comfortable pace' : harder ? 'Add a controlled challenge if form remains strong' : 'Move with controlled form';
+      const days = ['Foundation','Upper body','Mobility flow','Lower body','Cardio & core','Full body','Restore'];
+      return days.map((day, i) => {
+        const restDay = moreRest && (i===2 || i===6);
+        return { day:i+1, focus:restDay ? 'Recovery and mobility' : `${day}: ${focus}`, warmup:restDay ? 'Easy walk, shoulder rolls, and gentle joint circles for 8 minutes.' : '5–8 minutes of easy movement, dynamic stretches, and joint mobility.', cooldown:restDay ? 'Gentle stretching, hydration, and an early wind-down routine.' : `${scale}. Finish with 5 minutes of slow breathing and relaxed stretching.`, exercises: restDay ? [{name:'Mobility sequence',sets:'1',reps:'Slow flow',duration:'15 min',rest:'As needed'},{name:'Easy walk',sets:'1',reps:'Comfortable',duration:'15–20 min',rest:'As needed'}] : [{name:i===4 ? cardio : 'Bodyweight squat or chair squat',sets:level.sets,reps:level.reps,duration:level.duration,rest:level.rest},{name:i===1 ? 'Incline push-up' : i===3 ? 'Glute bridge' : 'Standing row or band pull',sets:level.sets,reps:level.reps,duration:'10 min',rest:level.rest},{name:i===4 ? 'Dead bug' : 'Plank hold',sets:level.sets,reps:'Controlled reps',duration:'5–8 min',rest:level.rest}] };
+      });
+    }
+    function nutrition(goal){ return goal==='Muscle Gain' ? 'Build meals around regular protein-rich foods, colourful produce, whole grains, and enough fluids. Aim for consistency rather than extremes.' : goal==='Weight Loss' ? 'Choose satisfying meals with vegetables, protein, fibre-rich carbohydrates, and water. Sustainable portions matter more than restrictive rules.' : 'Support daily energy with varied meals, regular hydration, and foods you enjoy. Small consistent habits are more useful than perfection.'; }
+    function recovery(){ return 'Schedule sleep, hydration, and gentle movement as part of training. Stop if pain is sharp or unusual, and seek qualified guidance when needed.'; }
+    function renderPlan(plan, target) {
+      target.innerHTML = '';
+      if(!plan) return;
+      plan.forEach(item => {
+        const node = $('day-template').content.cloneNode(true);
+        node.querySelector('.day-label').textContent = `Day ${item.day}`;
+        node.querySelector('.day-focus').textContent = item.focus;
+        node.querySelector('.day-warmup').textContent = item.warmup;
+        node.querySelector('.day-cooldown').textContent = item.cooldown;
+        const ex=node.querySelector('.exercises');
+        item.exercises.forEach(e => { const card=document.createElement('div'); card.className='exercise rounded-xl p-4'; card.innerHTML=`<strong>${escapeHtml(e.name)}</strong><dl class="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-[#58746e]"><div><dt class="font-bold text-[#42625e]">Sets</dt><dd>${escapeHtml(e.sets)}</dd></div><div><dt class="font-bold text-[#42625e]">Repetitions</dt><dd>${escapeHtml(e.reps)}</dd></div><div><dt class="font-bold text-[#42625e]">Duration</dt><dd>${escapeHtml(e.duration)}</dd></div><div><dt class="font-bold text-[#42625e]">Rest</dt><dd>${escapeHtml(e.rest)}</dd></div></dl>`; ex.appendChild(card); });
+        target.appendChild(node);
+      });
+    }
+    function profileCard(r){ return `<div class="soft-card rounded-3xl p-6"><div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-[#e6f5dc] text-[#145c50]"><i data-lucide="user-round"></i></span><div><p class="text-xs font-bold uppercase tracking-widest text-[#66817b]">Latest profile</p><h2 class="text-xl font-extrabold">${escapeHtml(r.name)}</h2></div></div><dl class="mt-6 grid gap-4 sm:grid-cols-3"><div><dt class="text-xs font-bold text-[#66817b]">USER ID</dt><dd class="mt-1 font-bold">${escapeHtml(r.user_id)}</dd></div><div><dt class="text-xs font-bold text-[#66817b]">AGE / WEIGHT</dt><dd class="mt-1 font-bold">${r.age} years · ${r.weight} kg</dd></div><div><dt class="text-xs font-bold text-[#66817b]">GOAL / INTENSITY</dt><dd class="mt-1 font-bold">${escapeHtml(r.goal)} · ${escapeHtml(r.intensity)}</dd></div></dl></div>`; }
+    function renderMyPlan(){
+      const box=$('my-plan-content'), r=currentRecord();
+      if(!r){box.innerHTML=`<div class="soft-card rounded-3xl p-10 text-center"><i data-lucide="calendar-plus" class="mx-auto h-10 w-10 text-[#16705f]"></i><h2 class="mt-4 text-2xl font-extrabold">Your plan starts here</h2><p class="mx-auto mt-2 max-w-md text-[#58746e]">Generate a seven-day plan and it will appear in this space.</p><button type="button" onclick="navigate('generate')" class="mt-6 rounded-xl bg-[#145c50] px-5 py-3 font-bold text-white">Generate New Plan</button></div>`; lucide.createIcons(); return;}
+      const active=parsePlan(r.updated_plan)||parsePlan(r.original_plan); box.innerHTML=profileCard(r)+`<div class="mt-6 flex flex-wrap gap-3"><button type="button" onclick="navigate('feedback')" class="rounded-xl bg-[#145c50] px-4 py-3 font-bold text-white">Give Feedback</button><button type="button" onclick="navigate('feedback')" class="rounded-xl border border-[#145c50] px-4 py-3 font-bold text-[#145c50]">Update Plan</button><button type="button" onclick="navigate('generate')" class="rounded-xl border border-[#bdcfc7] px-4 py-3 font-bold">Generate New Plan</button></div><div class="mt-8 grid gap-5 md:grid-cols-2"><div class="rounded-2xl bg-[#fff0ea] p-5"><div class="flex gap-3"><i data-lucide="salad" class="h-5 w-5 text-[#bd3d25]"></i><div><h2 class="font-extrabold">Nutrition Tip</h2><p class="mt-2 leading-6 text-[#705e54]">${escapeHtml(r.nutrition_tip)}</p></div></div></div><div class="rounded-2xl bg-[#e6f5dc] p-5"><div class="flex gap-3"><i data-lucide="heart-pulse" class="h-5 w-5 text-[#145c50]"></i><div><h2 class="font-extrabold">Recovery Tip</h2><p class="mt-2 leading-6 text-[#466861]">${escapeHtml(r.recovery_tip)}</p></div></div></div></div><div class="mt-8"><div class="flex items-center justify-between"><h2 class="text-2xl font-extrabold">${r.updated_plan ? 'Updated Plan' : 'Original Plan'}</h2><span class="rounded-full bg-[#e6f5dc] px-3 py-1 text-xs font-bold text-[#145c50]">${escapeHtml(r.plan_status)}</span></div><div id="my-days" class="mt-5 grid gap-4"></div></div>`; renderPlan(active,$('my-days'));lucide.createIcons();
+    }
+    function renderFeedback(){
+      const box=$('feedback-content'),r=currentRecord(); if(!r){box.innerHTML=`<div class="soft-card rounded-3xl p-10 text-center"><h2 class="text-2xl font-extrabold">No plan to update yet</h2><p class="mt-2 text-[#58746e]">Generate a starting plan before sharing feedback.</p><button type="button" onclick="navigate('generate')" class="mt-6 rounded-xl bg-[#145c50] px-5 py-3 font-bold text-white">Generate Plan</button></div>`;return;}
+      box.innerHTML=`${profileCard(r)}<form id="feedback-form" class="soft-card mt-7 rounded-3xl p-6 sm:p-8"><label for="feedback-text" class="text-xl font-extrabold">What would you like to change?</label><p class="mt-1 text-sm text-[#58746e]">Use a quick choice or write your own useful training feedback.</p><div class="mt-4 flex flex-wrap gap-2" id="chips">${['I want more cardio.','I need more rest days.','The workout is too difficult.','The workout is too easy.','I want more strength exercises.'].map(x=>`<button type="button" class="chip rounded-full border border-[#bdcfc7] px-3 py-2 text-sm font-bold transition" data-chip="${x}">${x}</button>`).join('')}</div><label for="feedback-text" class="sr-only">Feedback</label><textarea id="feedback-text" class="field mt-5 min-h-32" placeholder="Describe how the plan feels for you...">${escapeHtml(r.feedback || '')}</textarea><p id="feedback-error" class="error" role="alert"></p><button id="feedback-submit" type="submit" class="mt-3 rounded-xl bg-[#145c50] px-5 py-3 font-bold text-white">Update My Plan</button></form><div id="feedback-loading" class="hidden mt-5 rounded-xl bg-[#e6f5dc] p-4 font-bold text-[#145c50]" aria-live="polite">Updating your personalized plan...</div><div id="feedback-results" class="mt-8"></div>`;
+      document.querySelectorAll('[data-chip]').forEach(b=>b.addEventListener('click',()=>{$('feedback-text').value=b.dataset.chip;document.querySelectorAll('[data-chip]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');}));
+      $('feedback-form').addEventListener('submit', submitFeedback); if(r.updated_plan) renderFeedbackResults(r); lucide.createIcons();
+    }
+    function renderFeedbackResults(r){ const box=$('feedback-results'); box.innerHTML=`<div class="rounded-2xl bg-[#e6f5dc] p-5"><h2 class="text-xl font-extrabold">Change summary</h2><p class="mt-2 text-[#466861]">Your feedback — “${escapeHtml(r.feedback)}” — informed this updated plan. The original plan remains saved for comparison.</p></div><div class="mt-8 grid gap-8 xl:grid-cols-2"><div><h2 class="text-2xl font-extrabold">Original Plan</h2><div id="original-days" class="mt-4 grid gap-4"></div></div><div><h2 class="text-2xl font-extrabold">Updated Plan</h2><div id="updated-days" class="mt-4 grid gap-4"></div></div></div>`;renderPlan(parsePlan(r.original_plan),$('original-days'));renderPlan(parsePlan(r.updated_plan),$('updated-days')); }
+    async function submitFeedback(e){e.preventDefault();const r=currentRecord(), text=$('feedback-text').value.trim();$('feedback-error').textContent=text?'':'Please share feedback before updating your plan.';if(!text)return;const btn=$('feedback-submit');btn.disabled=true;btn.textContent='Updating…';$('feedback-loading').classList.remove('hidden');const updated=planData(r,text);try{const result=await window.dataSdk.update({...r,feedback:text,updated_plan:JSON.stringify(updated),plan_status:'Updated'});if(!result.isOk) say('Could not confirm the update. Refresh before trying again.');else say('Updated plan saved.');}finally{btn.disabled=false;btn.textContent='Update My Plan';$('feedback-loading').classList.add('hidden');}}
+    function renderAdmin(){const box=$('admin-content'), total=backendRecords.length, updated=backendRecords.filter(r=>r.updated_plan).length, feedback=backendRecords.filter(r=>r.feedback).length; box.innerHTML=`<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">${[['Total Users',total,'users'],['Total Plans',total,'calendar-check'],['Updated Plans',updated,'refresh-cw'],['Feedback Submitted',feedback,'message-square-text']].map(x=>`<div class="soft-card rounded-2xl p-5"><div class="flex items-center justify-between"><p class="font-bold text-[#58746e]">${x[0]}</p><i data-lucide="${x[2]}" class="h-5 w-5 text-[#16705f]"></i></div><p class="mt-4 text-4xl font-extrabold">${x[1]}</p></div>`).join('')}</div><div class="soft-card mt-7 overflow-hidden rounded-3xl"><div class="flex items-center justify-between p-6"><h2 class="text-xl font-extrabold">User plans</h2><span class="text-sm text-[#58746e]">${total}/999 records</span></div>${total?`<div class="overflow-x-auto"><table class="w-full min-w-[900px] text-left text-sm"><thead class="bg-[#f1f8e9] text-xs uppercase tracking-wide text-[#58746e]"><tr><th class="px-5 py-4">User ID</th><th class="px-5 py-4">Name</th><th class="px-5 py-4">Age</th><th class="px-5 py-4">Weight</th><th class="px-5 py-4">Goal</th><th class="px-5 py-4">Intensity</th><th class="px-5 py-4">Plan Status</th><th class="px-5 py-4">Actions</th></tr></thead><tbody>${backendRecords.map(r=>`<tr class="border-t border-[#e4eee8]"><td class="px-5 py-4 font-bold">${escapeHtml(r.user_id)}</td><td class="px-5 py-4">${escapeHtml(r.name)}</td><td class="px-5 py-4">${r.age}</td><td class="px-5 py-4">${r.weight} kg</td><td class="px-5 py-4">${escapeHtml(r.goal)}</td><td class="px-5 py-4">${escapeHtml(r.intensity)}</td><td class="px-5 py-4"><span class="rounded-full bg-[#e6f5dc] px-2.5 py-1 text-xs font-bold text-[#145c50]">${escapeHtml(r.plan_status)}</span></td><td class="px-5 py-4"><div class="flex gap-2"><button type="button" onclick="viewRecord('${r.__backendId}')" class="rounded-lg border border-[#145c50] px-3 py-2 font-bold text-[#145c50]">View</button><button type="button" onclick="openDeleteModal('${r.__backendId}')" class="rounded-lg border border-red-300 px-3 py-2 font-bold text-red-700">Delete</button></div></td></tr>`).join('')}</tbody></table></div>`:`<div class="p-10 text-center text-[#58746e]">No saved users yet. Generate a plan to create the first record.</div>`}</div>`;lucide.createIcons();}
+    function viewRecord(id){selectedRecordId=id;navigate('my-plan');}
+    function openDeleteModal(id){deleteTarget=backendRecords.find(r=>r.__backendId===id);if(!deleteTarget)return;$('delete-copy').textContent=`This will remove ${deleteTarget.name} and all associated FitBuddy plan data.`;$('delete-modal').classList.add('open');$('confirm-delete').focus();}
+    function closeDeleteModal(){$('delete-modal').classList.remove('open');deleteTarget=null;}
+    $('confirm-delete').addEventListener('click',async e=>{if(!deleteTarget)return;const btn=e.currentTarget;btn.disabled=true;btn.textContent='Deleting…';try{const result=await window.dataSdk.delete(deleteTarget);if(!result.isOk)say('Could not confirm deletion. Refresh before trying again.');else{if(selectedRecordId===deleteTarget.__backendId)selectedRecordId=null;closeDeleteModal();say('User deleted.');}}finally{btn.disabled=false;btn.textContent='Delete user';}});
+    function validateForm(fd){let good=true;const checks={name:fd.get('name').trim()? '':'Enter a name.', 'user-id':fd.get('user_id').trim()? '':'Enter a non-empty User ID.',age:(+fd.get('age')>=13&&+fd.get('age')<=100)?'':'Enter an age from 13 to 100.',weight:(+fd.get('weight')>=30&&+fd.get('weight')<=300)?'':'Enter a weight from 30 to 300 kg.',goal:fd.get('goal')?'':'Select a fitness goal.',intensity:fd.get('intensity')?'':'Select an intensity.'};Object.entries(checks).forEach(([id,msg])=>{const el=$(id),err=$(id+'-error');if(err){err.textContent=msg;el.classList.toggle('invalid',!!msg);}if(msg)good=false;});return good;}
+    $('plan-form').addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(e.currentTarget);$('form-error').classList.add('hidden');if(!validateForm(fd)){$('form-error').textContent='Please correct the highlighted fields.';$('form-error').classList.remove('hidden');return;}if(backendRecords.length>=999){$('form-error').textContent='FitBuddy has reached its 999 saved record limit.';$('form-error').classList.remove('hidden');return;}const b=$('generate-submit');b.disabled=true;b.textContent='Generating…';$('generate-loading').classList.remove('hidden');const profile={user_id:fd.get('user_id').trim(),name:fd.get('name').trim(),age:Number(fd.get('age')),weight:Number(fd.get('weight')),goal:fd.get('goal'),intensity:fd.get('intensity')};await new Promise(r=>setTimeout(r,900));const plan=planData(profile);const record={...profile,original_plan:JSON.stringify(plan),updated_plan:'',nutrition_tip:nutrition(profile.goal),recovery_tip:recovery(),feedback:'',plan_status:'Original',created_at:new Date().toISOString()};try{const result=await window.dataSdk.create(record);if(!result.isOk){$('form-error').textContent='We could not confirm the saved plan. Refresh before trying again.';$('form-error').classList.remove('hidden');}else{selectedRecordId=null;$('generated-preview').classList.remove('hidden');$('generated-preview').innerHTML='<div class="rounded-2xl bg-[#e6f5dc] p-5"><strong>Plan created in the FitBuddy demo environment.</strong> Your saved seven-day plan is now available in My Plan.</div><div id="preview-days" class="mt-5 grid gap-4"></div>';renderPlan(plan,$('preview-days'));say('Your plan was saved.');}}finally{b.disabled=false;b.textContent='Generate My Plan';$('generate-loading').classList.add('hidden');}});
+    function runHealthCheck(){$('health-output').textContent='{"status":"ok","service":"FitBuddy"}';$('health-output').classList.remove('hidden');}
+    const handler={onDataChanged(data){clearTimeout(initialLoadTimer);backendRecords=data;if(selectedRecordId&&!backendRecords.some(r=>r.__backendId===selectedRecordId))selectedRecordId=null;const active=document.querySelector('.route.active')?.id;if(active==='admin')renderAdmin();if(active==='my-plan')renderMyPlan();if(active==='feedback')renderFeedback();}};
+    async function initializeDataSdk(){initialLoadTimer=setTimeout(()=>say('Could not load saved data. Please try again.'),8000);const result=await window.dataSdk.init(handler);if(!result.isOk){clearTimeout(initialLoadTimer);say('Could not initialize saved FitBuddy data.');}}
+    document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();initializeDataSdk();});
+  </script>
+ 
+</body></html>
